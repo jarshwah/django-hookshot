@@ -19,8 +19,3 @@ Current style checking tools:
 - flake8: python linting
 - isort: python import sorting
 - black: python code formatting
-
-Note:
-
-    You must have python3.6 available on your path, as it is required for some
-    of the hooks.

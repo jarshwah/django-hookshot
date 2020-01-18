@@ -9,10 +9,10 @@ workflows:
           version: "3.6"
           requires:
             - build
-      - test-version:
-          version: "3.7"
-          requires:
-            - build
+      # - test-version:
+      #     version: "3.7"
+      #     requires:
+      #       - build
 
   deployment-workflow:
     jobs:
@@ -92,7 +92,14 @@ jobs:
       - run:
           name: Tests
           command: |
-            poetry run pytest testproject
+            mkdir test-results
+            poetry run pytest --junitxml=test-results/junit.xml testproject
+
+      - store_test_results:
+          path: test-results
+
+      - store_artifacts:
+          path: test-results
 
   deploy:
     docker:
