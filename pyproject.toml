@@ -1,0 +1,70 @@
+[tool.isort]
+combine_as_imports = true
+default_section = "FIRSTPARTY"
+line_length = 100
+multi_line_output = 3
+force_grid_wrap = 0
+include_trailing_comma = true
+not_skip = "__init__.py"
+skip = "migrations"
+known_third_party = ["django"]
+known_first_party = [
+    "hookshot",
+]
+
+[tool.black]
+line-length = 120
+
+[tool.poetry]
+name = "django-hookshot"
+readme = "README.md"
+homepage = "http://github.com/kogan/"
+repository = "http://github.com/kogan/django-hookshot/"
+documentation = "http://github.com/kogan/django-hookshot/"
+version = "0.1.0"
+description = "A django package for managing subscription states"
+license = "BSD-3-Clause"
+authors = ["Josh Smeaton <josh.smeaton@gmail.com>"]
+packages = [
+    { include = "hookshot", from = "src" },
+]
+keywords = ["hookshot", "django"]
+classifiers = [
+    "Intended Audience :: Developers",
+    "License :: OSI Approved :: BSD License",
+    "Natural Language :: English",
+    "Programming Language :: Python",
+    "Programming Language :: Python :: 3",
+    "Programming Language :: Python :: 3.6",
+    "Programming Language :: Python :: 3.7",
+    "Framework :: Django",
+    "Framework :: Django :: 1.11",
+    "Framework :: Django :: 2.0",
+    "Framework :: Django :: 2.1",
+    "Framework :: Django :: 2.2",
+]
+
+
+[tool.poetry.dependencies]
+python = "^3.6"
+django = "^2.2"
+djangorestframework = "^3.11.0"
+
+[tool.poetry.dev-dependencies]
+black = {version = "^19.10b0",allow-prereleases = true}
+flake8 = "^3.7"
+flake8-builtins = "^1.4"
+flake8-comprehensions = "^2.1"
+flake8-isort = "^2.7"
+flake8-pep3101 = "^1.2"
+ipdb = "^0.12.0"
+isort = "^4.3"
+pre-commit = "^1.15"
+pytest = "^5.3"
+pytest-django = "^3.8"
+ipython = "^7.11.1"
+pytest-pythonpath = "^0.7.3"
+
+[build-system]
+requires = ["poetry>=1.0.2"]
+build-backend = "poetry.masonry.api"
