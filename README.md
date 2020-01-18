@@ -1,7 +1,7 @@
 # django-hookshot
-A django package for managing subscription states
+A django package for writing simple webhooks with admin configurable access per user
 
-[![CircleCI](https://circleci.com/gh/kogan/django-hookshot.svg?style=svg)](https://circleci.com/gh/kogan/django-hookshot)
+[![CircleCI](https://circleci.com/gh/jarshwah/django-hookshot.svg?style=svg)](https://circleci.com/gh/jarshwah/django-hookshot)
 
 ## Contributing
 

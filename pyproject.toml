@@ -7,10 +7,8 @@ force_grid_wrap = 0
 include_trailing_comma = true
 not_skip = "__init__.py"
 skip = "migrations"
-known_third_party = ["django"]
-known_first_party = [
-    "hookshot",
-]
+known_third_party = ["django", "rest_framework"]
+known_first_party = ["hookshot", "application"]
 
 [tool.black]
 line-length = 120
@@ -18,17 +16,17 @@ line-length = 120
 [tool.poetry]
 name = "django-hookshot"
 readme = "README.md"
-homepage = "http://github.com/kogan/"
-repository = "http://github.com/kogan/django-hookshot/"
-documentation = "http://github.com/kogan/django-hookshot/"
+homepage = "http://github.com/jarshwah/"
+repository = "http://github.com/jarshwah/django-hookshot/"
+documentation = "http://github.com/jarshwah/django-hookshot/"
 version = "0.1.0"
-description = "A django package for managing subscription states"
+description = "A django package for writing simple webhooks with admin configurable access per user"
 license = "BSD-3-Clause"
 authors = ["Josh Smeaton <josh.smeaton@gmail.com>"]
 packages = [
     { include = "hookshot", from = "src" },
 ]
-keywords = ["hookshot", "django"]
+keywords = ["hookshot", "django", "webhooks"]
 classifiers = [
     "Intended Audience :: Developers",
     "License :: OSI Approved :: BSD License",
@@ -46,6 +44,7 @@ classifiers = [
 
 
 [tool.poetry.dependencies]
+# TODO: proper ranges to support > py3.6 and django 1.11,2.2
 python = "^3.6"
 django = "^2.2"
 djangorestframework = "^3.11.0"
