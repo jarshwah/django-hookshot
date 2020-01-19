@@ -5,6 +5,9 @@ repos:
   hooks:
     - id: isort
       exclude: '^.*migrations.*$'
+      additional_dependencies: [
+        'toml'
+      ]
 
 - repo: https://github.com/ambv/black
   rev: 19.10b0

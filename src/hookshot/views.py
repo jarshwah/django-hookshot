@@ -1,14 +1,15 @@
-from rest_framework.authentication import TokenAuthentication, SessionAuthentication
+from rest_framework.authentication import SessionAuthentication, TokenAuthentication
 from rest_framework.exceptions import NotFound
-from rest_framework.permissions import BasePermission, IsAdminUser
+from rest_framework.permissions import IsAdminUser, IsAuthenticated
 from rest_framework.response import Response
 from rest_framework.views import APIView
 
-from .registry import _registry, webhook
+from .registry import _registry
 
 
-class HookTokenPermission(BasePermission):
+class HookTokenPermission(IsAuthenticated):
     def has_permission(self, request, view):
+        # TODO: implement dynamic permissions
         return super().has_permission(request, view)
 
 
@@ -37,7 +38,9 @@ class HookShotView(APIView):
         if len(request.authenticators) == 0:
             request.authenticators = [TokenAuthentication()]
         request._authenticate()
-        HookTokenPermission().has_permission(request, self)
+        perm = HookTokenPermission()
+        if not perm.has_permission(request, self):
+            self.permission_denied(request, message=getattr(perm, "message", None))
 
     def check_permissions(self, request):
         return super().check_permissions(request)

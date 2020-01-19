@@ -1,7 +1,7 @@
 from django.db import models
-from django.utils import timezone
 
-from hookshot.registry import RegistryChoices
+# from django.utils import timezone
+# from hookshot.registry import RegistryChoices
 
 
 # A CharField that doesn't migrate choices
@@ -12,6 +12,8 @@ class CharField(models.CharField):
         kwargs.pop("choices", None)
         return (name, path, args, kwargs)
 
+
+# TODO: add a management command to sync hooks table
 
 # class Webhook(models.Model):
 #     HOOKS = RegistryChoices()

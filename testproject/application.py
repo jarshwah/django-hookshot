@@ -76,7 +76,7 @@ def hello_webhook(self, request):
     return Response(dict(result="secure hello"))
 
 
-@webhook("insecure_webhook", description="No auth required")
+@webhook("insecure_webhook", insecure=True, description="No auth required")
 def insecure_webhook(self, request):
     return Response(dict(result="insecure hello"))
 
